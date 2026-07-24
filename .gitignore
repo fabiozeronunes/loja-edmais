@@ -1,0 +1,4 @@
+.gemini/
+.antigravity/
+*.tmp
+.DS_Store

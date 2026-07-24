@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2ª Via de Boleto ÉDMAIS | Fatura e Pagamento Online</title>
+    <meta name="description" content="Emita a 2ª via da sua fatura do Cartão ÉDMAIS online. Copie a chave PIX, código de barras ou baixe o PDF para pagamento rápido e sem filas.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- TOP PROMO BANNER -->
+    <div class="top-promo-banner" id="top-promo">
+        <a href="cartao-edmais.html" class="promo-link">
+            <i data-lucide="credit-card"></i> Ainda não tem o Cartão ÉDMAIS? Solicite online em menos de 3 minutos!
+        </a>
+        <button class="close-top-banner" id="close-banner-btn" aria-label="Fechar banner">
+            <i data-lucide="x"></i>
+        </button>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="main-header" id="header">
+        <div class="header-container">
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-btn" id="mobile-menu-open" aria-label="Menu principal">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <!-- Brand Logo -->
+            <a href="index.html" class="logo-brand" aria-label="ÉDMAIS Home">
+                <img src="logo-edmais-official.png" alt="ÉDMAIS - Moda e Estilo" class="logo-img">
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html#departments" class="nav-link">Feminino</a></li>
+                    <li><a href="index.html#departments" class="nav-link">Masculino</a></li>
+                    <li><a href="index.html#departments" class="nav-link">Infantil</a></li>
+                    <li><a href="index.html#departments" class="nav-link">Calçados</a></li>
+                    <li><a href="cartao-edmais.html" class="nav-link">Cartão ÉDMAIS</a></li>
+                    <li><a href="boleto.html" class="nav-link highlight-red active">2ª Via de Boleto</a></li>
+                    <li><a href="index.html#store-locator" class="nav-link">Lojas</a></li>
+                </ul>
+            </nav>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <a href="cartao-edmais.html" class="btn btn-blue btn-xs">
+                    <i data-lucide="credit-card"></i> Peça seu Cartão
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PORTAL HERO & BOLETO SEARCH -->
+    <section class="card-page-hero" style="background: linear-gradient(135deg, #0B3D91 0%, #06255B 100%); text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <span class="badge-accent" style="background-color: rgba(11, 61, 145, 0.4); color: #80B3FF; border-color: rgba(128, 179, 255, 0.4);">PORTAL DO CLIENTE ÉDMAIS</span>
+            <h1 class="card-hero-title">2ª Via de Boleto e Fatura</h1>
+            <p class="card-hero-subtitle" style="margin: 0 auto 40px auto;">Consulte o saldo da sua fatura, copie o código de barras ou pague instantaneamente via PIX sem precisar sair de casa.</p>
+        </div>
+
+        <!-- SEARCH FORM CARD -->
+        <div class="portal-search-box">
+            <div class="portal-tabs">
+                <button type="button" class="portal-tab-btn active" id="tab-cpf" onclick="switchTab('cpf')">
+                    <i data-lucide="user"></i> Por CPF
+                </button>
+                <button type="button" class="portal-tab-btn" id="tab-card" onclick="switchTab('card')">
+                    <i data-lucide="credit-card"></i> Por Nº do Cartão
+                </button>
+            </div>
+
+            <form id="boleto-search-form">
+                <div id="field-cpf" class="portal-form-group">
+                    <label for="doc-cpf">CPF do Titular *</label>
+                    <input type="text" id="doc-cpf" class="portal-input" placeholder="000.000.000-00" required>
+                </div>
+
+                <div id="field-card" class="portal-form-group" style="display: none;">
+                    <label for="doc-card">Número do Cartão ÉDMAIS *</label>
+                    <input type="text" id="doc-card" class="portal-input" placeholder="6390 •••• •••• ••••">
+                </div>
+
+                <div class="portal-form-group">
+                    <label for="doc-birth">Data de Nascimento do Titular *</label>
+                    <input type="date" id="doc-birth" class="portal-input" required>
+                </div>
+
+                <button type="submit" class="btn btn-red btn-block btn-lg">
+                    <i data-lucide="search"></i> Consultar Minha Fatura
+                </button>
+            </form>
+
+            <!-- RESULT CARD SIMULATION -->
+            <div class="invoice-result-card" id="invoice-result">
+                <div class="invoice-header-info">
+                    <div>
+                        <div style="font-size:0.8rem; color:var(--color-muted); font-weight:600; text-transform:uppercase;">Fatura Aberta</div>
+                        <h3 style="font-size:1.6rem; color:var(--color-blue); margin-top:2px;">R$ 189,90</h3>
+                    </div>
+                    <span class="invoice-status-badge">Pronta para Pagamento</span>
+                </div>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; font-size:0.9rem; margin-bottom:15px;">
+                    <div><strong>Vencimento:</strong> 10/08/2026</div>
+                    <div><strong>Melhor Dia de Compra:</strong> Dia 01</div>
+                    <div><strong>Titular:</strong> Cliente ÉDMAIS</div>
+                    <div><strong>Status:</strong> Em Aberto</div>
+                </div>
+
+                <div style="background-color:#FFF; border:1px solid #DDD; padding:12px; border-radius:6px; font-family:monospace; font-size:0.85rem; text-align:center; word-break:break-all; margin-bottom:15px;" id="barcode-text">
+                    23793.38128 60000.123456 7 89100000018990
+                </div>
+
+                <div class="invoice-actions-row">
+                    <button class="btn btn-blue btn-xs" onclick="copyBarcode()">
+                        <i data-lucide="copy"></i> Copiar Código de Barras
+                    </button>
+                    <button class="btn btn-red btn-xs" onclick="copyPix()">
+                        <i data-lucide="qr-code"></i> Copiar Chave PIX
+                    </button>
+                    <button class="btn btn-outline btn-xs" onclick="downloadPdf()">
+                        <i data-lucide="download"></i> Baixar Fatura PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPÇÕES DE PAGAMENTO -->
+    <section class="section-container">
+        <div class="section-header">
+            <span class="accent-title">FACILIDADE NA HORA DE PAGAR</span>
+            <h2 class="section-title">Onde você pode pagar sua fatura</h2>
+            <p class="section-subtitle">Escolha o canal de sua preferência para manter suas contas em dia.</p>
+        </div>
+
+        <div class="benefits-cards-grid">
+            <div class="card-benefit-item highlight">
+                <div class="benefit-icon-wrapper">
+                    <i data-lucide="zap"></i>
+                </div>
+                <h3>PIX Instantâneo (24/7)</h3>
+                <p>Copie a chave PIX da sua fatura e pague direto pelo app de qualquer banco. O limite do seu cartão é liberado rapidamente!</p>
+            </div>
+
+            <div class="card-benefit-item">
+                <div class="benefit-icon-wrapper">
+                    <i data-lucide="store"></i>
+                </div>
+                <h3>Em Qualquer Loja ÉDMAIS</h3>
+                <p>Apresente seu CPF ou cartão direto nos caixas de uma das nossas mais de 90 lojas físicas e pague em dinheiro ou débito.</p>
+            </div>
+
+            <div class="card-benefit-item">
+                <div class="benefit-icon-wrapper">
+                    <i data-lucide="building"></i>
+                </div>
+                <h3>Rede Bancária e Lotéricas</h3>
+                <p>Utilize o código de barras impresso ou digital para pagar em qualquer agência bancária, aplicativo de banco ou casa lotérica.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col-brand">
+                <a href="index.html" class="logo-brand" aria-label="ÉDMAIS Home">
+                    <img src="logo-edmais-official.png" alt="ÉDMAIS" class="logo-img">
+                </a>
+                <p>Moda, estilo, tendências e calçados com preços democráticos. Presença nacional em mais de 90 lojas físicas para vestir você e sua família.</p>
+                <div class="social-icons">
+                    <a href="https://instagram.com/lojasedmais" target="_blank" rel="noopener" aria-label="Instagram ÉDMAIS" title="Instagram @lojasedmais" class="icon-instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://facebook.com/lojasedmais" target="_blank" rel="noopener" aria-label="Facebook ÉDMAIS" title="Facebook ÉDMAIS" class="icon-facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://wa.me/551140033900" target="_blank" rel="noopener" aria-label="WhatsApp ÉDMAIS" title="WhatsApp (11) 4003-3900" class="icon-whatsapp">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+                    </a>
+                    <a href="https://youtube.com/@lojasedmais" target="_blank" rel="noopener" aria-label="YouTube ÉDMAIS" title="YouTube ÉDMAIS" class="icon-youtube">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="https://tiktok.com/@lojasedmais" target="_blank" rel="noopener" aria-label="TikTok ÉDMAIS" title="TikTok @lojasedmais" class="icon-tiktok">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.97v7.58c.01 2.24-.62 4.54-2.09 6.27-1.46 1.73-3.66 2.76-5.91 2.91-2.25.16-4.59-.44-6.3-1.92C.6 21.42-.24 19.16.03 16.92c.27-2.24 1.49-4.32 3.32-5.59 1.83-1.27 4.18-1.74 6.35-1.29v4.14c-1.07-.33-2.27-.2-3.23.36-.96.56-1.64 1.55-1.83 2.64-.19 1.09.12 2.23.82 3.08.7.85 1.79 1.34 2.89 1.3 1.1-.04 2.14-.58 2.77-1.48.63-.9.91-2.05.89-3.15V.02z"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/company/lojasedmais" target="_blank" rel="noopener" aria-label="LinkedIn ÉDMAIS" title="LinkedIn ÉDMAIS" class="icon-linkedin">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Cartão ÉDMAIS</h4>
+                <ul>
+                    <li><a href="cartao-edmais.html">Solicitar Cartão</a></li>
+                    <li><a href="boleto.html">2ª Via de Boleto</a></li>
+                    <li><a href="boleto.html">Consultar Fatura</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Institucional & Carreiras</h4>
+                <ul>
+                    <li><a href="quem-somos.html">Quem Somos / História</a></li>
+                    <li><a href="atendimento.html?tipo=fale-conosco">Fale Conosco (SAC)</a></li>
+                    <li><a href="atendimento.html?tipo=trabalhe-conosco">Trabalhe Conosco (Vagas)</a></li>
+                    <li><a href="index.html#store-locator">Nossas Lojas (90+)</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Lojas ÉDMAIS. Todos os Direitos Reservados.</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/551140033900?text=Ol%C3%A1%21%20Gostaria%20de%20atendimento%20nas%20Lojas%20%C9DMAIS" target="_blank" rel="noopener" class="floating-whatsapp" aria-label="Atendimento pelo WhatsApp">
+        <i data-lucide="message-circle"></i>
+    </a>
+
+    <!-- JS SCRIPTS -->
+    <script>
+        lucide.createIcons();
+
+        function switchTab(type) {
+            document.getElementById('tab-cpf').classList.toggle('active', type === 'cpf');
+            document.getElementById('tab-card').classList.toggle('active', type === 'card');
+            document.getElementById('field-cpf').style.display = type === 'cpf' ? 'block' : 'none';
+            document.getElementById('field-card').style.display = type === 'card' ? 'block' : 'none';
+            
+            if(type === 'cpf') {
+                document.getElementById('doc-cpf').setAttribute('required', 'required');
+                document.getElementById('doc-card').removeAttribute('required');
+            } else {
+                document.getElementById('doc-card').setAttribute('required', 'required');
+                document.getElementById('doc-cpf').removeAttribute('required');
+            }
+        }
+
+        document.getElementById('boleto-search-form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('invoice-result').classList.add('active');
+            document.getElementById('invoice-result').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        function copyBarcode() {
+            const text = document.getElementById('barcode-text').innerText;
+            navigator.clipboard.writeText(text);
+            alert('Código de barras copiado para a área de transferência!');
+        }
+
+        function copyPix() {
+            navigator.clipboard.writeText("00020126580014BR.GOV.BCB.PIX0136edmais-fatura-pix-992384759283745204000053039865405189.905802BR5913LOJAS EDMAIS6009SAO PAULO620705031236304");
+            alert('Chave PIX Copia e Cola copiada com sucesso!');
+        }
+
+        function downloadPdf() {
+            alert('Iniciando download da 2ª Via da Fatura em PDF...');
+        }
+    </script>
+</body>
+</html>

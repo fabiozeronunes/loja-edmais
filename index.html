@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÉDMAIS | Moda, Calçados e Acessórios para toda a Família</title>
+    <meta name="description" content="Descubra a nova coleção ÉDMAIS. Tendências de moda, calçados e acessórios com preços acessíveis e em mais de 90 lojas físicas.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- TOP PROMO BANNER -->
+    <div class="top-promo-banner" id="top-promo">
+        <a href="#store-locator" class="promo-link">
+            <i data-lucide="map-pin"></i> Encontre a loja ÉDMAIS mais próxima de você • Mais de 90 lojas físicas
+        </a>
+        <button class="close-top-banner" id="close-banner-btn" aria-label="Fechar banner">
+            <i data-lucide="x"></i>
+        </button>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="main-header" id="header">
+        <div class="header-container">
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-btn" id="mobile-menu-open" aria-label="Menu principal">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <!-- Brand Logo -->
+            <a href="#" class="logo-brand" aria-label="ÉDMAIS Home">
+                <img src="logo-edmais-official.png" alt="ÉDMAIS - Moda e Estilo" class="logo-img">
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#departments" class="nav-link">Feminino</a></li>
+                    <li><a href="#departments" class="nav-link">Masculino</a></li>
+                    <li><a href="#departments" class="nav-link">Infantil</a></li>
+                    <li><a href="#departments" class="nav-link">Calçados</a></li>
+                    <li><a href="cartao-edmais.html" class="nav-link highlight-red">Cartão ÉDMAIS</a></li>
+                    <li><a href="boleto.html" class="nav-link">2ª Via de Boleto</a></li>
+                    <li><a href="#store-locator" class="nav-link">Lojas</a></li>
+                </ul>
+            </nav>
+
+            <!-- Search Area -->
+            <div class="header-search">
+                <div class="search-input-wrapper">
+                    <input type="text" placeholder="Buscar por produtos, marcas..." id="search-input" autocomplete="off">
+                    <button class="search-submit-btn" aria-label="Buscar">
+                        <i data-lucide="search"></i>
+                    </button>
+                </div>
+                <!-- Search Suggestions Autocomplete -->
+                <div class="search-suggestions" id="search-suggestions">
+                    <div class="suggestion-group">
+                        <span class="group-title">Mais Buscados</span>
+                        <a href="#" class="suggestion-item">Jaqueta Jeans</a>
+                        <a href="#" class="suggestion-item">Bota de Couro</a>
+                        <a href="#" class="suggestion-item">Vestido Floral</a>
+                        <a href="#" class="suggestion-item">Tênis Casual</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Icons -->
+            <div class="header-actions">
+                <button class="action-btn" id="search-mobile-toggle" aria-label="Buscar (Mobile)">
+                    <i data-lucide="search"></i>
+                </button>
+                <a href="boleto.html" class="btn btn-red btn-xs">
+                    <i data-lucide="file-text"></i> 2ª Via Fatura
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE SEARCH BAR (Toggled) -->
+    <div class="mobile-search-bar" id="mobile-search-bar">
+        <input type="text" placeholder="Buscar no site..." id="search-input-mobile">
+        <button id="close-search-mobile"><i data-lucide="x"></i></button>
+    </div>
+
+    <!-- SIDE DRAWER: CART -->
+    <div class="drawer-overlay" id="cart-overlay"></div>
+    <div class="side-drawer" id="cart-drawer">
+        <div class="drawer-header">
+            <h3>Seu Carrinho</h3>
+            <button class="close-drawer-btn" id="cart-close"><i data-lucide="x"></i></button>
+        </div>
+        <div class="drawer-content" id="cart-items-container">
+            <!-- Dynamic Cart Items here -->
+            <div class="empty-state">
+                <i data-lucide="shopping-bag" class="empty-icon"></i>
+                <p>Seu carrinho está vazio.</p>
+                <a href="#departments" class="btn btn-blue close-drawer-action">Explorar Moda</a>
+            </div>
+        </div>
+        <div class="drawer-footer" id="cart-drawer-footer" style="display: none;">
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span class="total-price" id="cart-subtotal">R$ 0,00</span>
+            </div>
+            <div class="shipping-info">
+                <i data-lucide="truck"></i>
+                <span>Frete grátis para compras acima de R$ 199</span>
+            </div>
+            <button class="btn btn-red btn-block" id="btn-checkout">Finalizar Compra</button>
+            <button class="btn btn-outline btn-block close-drawer-action" id="btn-continue-shopping">Continuar Comprando</button>
+        </div>
+    </div>
+
+    <!-- SIDE DRAWER: FAVORITES -->
+    <div class="drawer-overlay" id="favorites-overlay"></div>
+    <div class="side-drawer" id="favorites-drawer">
+        <div class="drawer-header">
+            <h3>Seus Favoritos</h3>
+            <button class="close-drawer-btn" id="favorites-close"><i data-lucide="x"></i></button>
+        </div>
+        <div class="drawer-content" id="fav-items-container">
+            <!-- Dynamic Favorites Items here -->
+            <div class="empty-state">
+                <i data-lucide="heart" class="empty-icon"></i>
+                <p>Nenhum item salvo ainda.</p>
+                <a href="#departments" class="btn btn-blue close-drawer-action">Ver Tendências</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIDE DRAWER: MOBILE MENU -->
+    <div class="drawer-overlay" id="mobile-menu-overlay"></div>
+    <div class="side-drawer mobile-drawer" id="mobile-drawer">
+        <div class="drawer-header">
+            <span class="logo-brand">
+                <img src="logo-edmais-official.png" alt="ÉDMAIS" class="logo-img">
+            </span>
+            <button class="close-drawer-btn" id="mobile-menu-close"><i data-lucide="x"></i></button>
+        </div>
+        <div class="drawer-content">
+            <ul class="mobile-nav-list">
+                <li><a href="#departments" class="mobile-nav-link">Feminino</a></li>
+                <li><a href="#departments" class="mobile-nav-link">Masculino</a></li>
+                <li><a href="#departments" class="mobile-nav-link">Infantil</a></li>
+                <li><a href="#departments" class="mobile-nav-link">Calçados</a></li>
+                <li><a href="cartao-edmais.html" class="mobile-nav-link highlight-red">Cartão ÉDMAIS</a></li>
+                <li><a href="boleto.html" class="mobile-nav-link">2ª Via de Boleto</a></li>
+                <li><a href="#store-locator" class="mobile-nav-link">Lojas Físicas (90+)</a></li>
+            </ul>
+            <div class="mobile-drawer-footer">
+                <a href="tel:0800" class="contact-item"><i data-lucide="phone"></i> Atendimento</a>
+                <a href="#store-locator" class="contact-item"><i data-lucide="map-pin"></i> Encontre uma Loja</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-carousel">
+            <!-- Slide 1 -->
+            <div class="hero-slide active" style="background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.45)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&q=80');">
+                <div class="hero-content">
+                    <span class="badge-tag">CONCEITO OUTONO/INVERNO</span>
+                    <h1 class="hero-title">Moda que acompanha seu estilo.</h1>
+                    <p class="hero-subtitle">As melhores marcas, tendências e preços para toda a família com a confiança das nossas mais de 90 lojas.</p>
+                    <div class="hero-actions-row">
+                        <a href="https://wa.me/551140033900?text=Ol%C3%A1%21%20Gostaria%20de%20atendimento%20nas%20Lojas%20%C9DMAIS" target="_blank" rel="noopener" class="btn btn-whatsapp"><i data-lucide="message-circle"></i> WhatsApp (11) 4003-3900</a>
+                        <a href="#store-locator" class="btn btn-outline-white">Encontrar Loja</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.45)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=80');">
+                <div class="hero-content">
+                    <span class="badge-tag">EXCLUSIVO ÉDMAIS</span>
+                    <h2 class="hero-title">Sua essência, suas escolhas.</h2>
+                    <p class="hero-subtitle">Descubra a nova linha Denim e Calçados com condições de parcelamento imperdíveis.</p>
+                    <div class="hero-actions-row">
+                        <a href="#departments" class="btn btn-blue">Ver Jeans</a>
+                        <a href="#promotions" class="btn btn-outline-white">Coleção Calçados</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Slider Navigation -->
+        <button class="carousel-control prev" id="hero-prev" aria-label="Anterior"><i data-lucide="chevron-left"></i></button>
+        <button class="carousel-control next" id="hero-next" aria-label="Próximo"><i data-lucide="chevron-right"></i></button>
+        <div class="carousel-dots" id="hero-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+    <!-- BENEFITS BAR -->
+    <section class="benefits-section">
+        <div class="benefits-container">
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i data-lucide="truck"></i>
+                </div>
+                <div class="benefit-text">
+                    <h4>Entrega Rápida</h4>
+                    <p>Envios com tarifas reduzidas e frete grátis</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i data-lucide="credit-card"></i>
+                </div>
+                <div class="benefit-text">
+                    <h4>Parcelamento</h4>
+                    <p>Até 10x sem juros em cartões de crédito</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i data-lucide="map-pin"></i>
+                </div>
+                <div class="benefit-text">
+                    <h4>Mais de 90 Lojas</h4>
+                    <p>Retirada grátis e facilidade de troca física</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i data-lucide="award"></i>
+                </div>
+                <div class="benefit-text">
+                    <h4>Grandes Marcas</h4>
+                    <p>Moda nacional e internacional selecionada</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPARTMENTS GRID -->
+    <section class="section-container" id="departments">
+        <div class="section-header">
+            <h2 class="section-title">Navegue por Categorias</h2>
+            <p class="section-subtitle">O melhor do closet contemporâneo em apenas um clique</p>
+        </div>
+        <div class="departments-grid">
+            <!-- Feminino -->
+            <a href="#lookbook" class="dept-card">
+                <div class="dept-image" style="background-image: url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="dept-overlay"></div>
+                <div class="dept-content">
+                    <h3>Feminino</h3>
+                    <span class="dept-cta">Ver Looks <i data-lucide="arrow-right"></i></span>
+                </div>
+            </a>
+            <!-- Masculino -->
+            <a href="#lookbook" class="dept-card">
+                <div class="dept-image" style="background-image: url('https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="dept-overlay"></div>
+                <div class="dept-content">
+                    <h3>Masculino</h3>
+                    <span class="dept-cta">Descobrir <i data-lucide="arrow-right"></i></span>
+                </div>
+            </a>
+            <!-- Infantil -->
+            <a href="#lookbook" class="dept-card">
+                <div class="dept-image" style="background-image: url('https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="dept-overlay"></div>
+                <div class="dept-content">
+                    <h3>Infantil</h3>
+                    <span class="dept-cta">Explorar <i data-lucide="arrow-right"></i></span>
+                </div>
+            </a>
+            <!-- Calçados -->
+            <a href="#lookbook" class="dept-card">
+                <div class="dept-image" style="background-image: url('https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="dept-overlay"></div>
+                <div class="dept-content">
+                    <h3>Calçados</h3>
+                    <span class="dept-cta">Confira <i data-lucide="arrow-right"></i></span>
+                </div>
+            </a>
+            <!-- Acessórios -->
+            <a href="#lookbook" class="dept-card">
+                <div class="dept-image" style="background-image: url('https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="dept-overlay"></div>
+                <div class="dept-content">
+                    <h3>Acessórios</h3>
+                    <span class="dept-cta">Acessar <i data-lucide="arrow-right"></i></span>
+                </div>
+            </a>
+            <!-- Esportivo -->
+            <a href="#lookbook" class="dept-card">
+                <div class="dept-image" style="background-image: url('https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="dept-overlay"></div>
+                <div class="dept-content">
+                    <h3>Esportivo</h3>
+                    <span class="dept-cta">Treinar <i data-lucide="arrow-right"></i></span>
+                </div>
+            </a>
+            <!-- Jeans -->
+            <a href="#lookbook" class="dept-card">
+                <div class="dept-image" style="background-image: url('https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="dept-overlay"></div>
+                <div class="dept-content">
+                    <h3>Jeans</h3>
+                    <span class="dept-cta">Vestir <i data-lucide="arrow-right"></i></span>
+                </div>
+            </a>
+            <!-- Moda Íntima -->
+            <a href="#lookbook" class="dept-card">
+                <div class="dept-image" style="background-image: url('https://images.unsplash.com/photo-1582533561751-ef6f6ab93a2e?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="dept-overlay"></div>
+                <div class="dept-content">
+                    <h3>Moda Íntima</h3>
+                    <span class="dept-cta">Coleções <i data-lucide="arrow-right"></i></span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- FEATURED EDITORIAL COLLECTIONS -->
+    <section class="section-container bg-light-section">
+        <div class="section-header">
+            <span class="accent-title">CAMPANHA</span>
+            <h2 class="section-title">Coleções em Destaque</h2>
+            <p class="section-subtitle">Curadoria de tendências globais adaptadas ao clima e estilo brasileiro</p>
+        </div>
+        <div class="collections-editorial-grid">
+            <!-- Large Editorial Card -->
+            <div class="editorial-card-large" style="background-image: linear-gradient(to right, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1200&q=80');">
+                <div class="editorial-content">
+                    <span class="editorial-label">Destaque da Estação</span>
+                    <h3>Nova Coleção</h3>
+                    <p class="editorial-desc">"Essenciais da temporada" que misturam corte clássico, texturas aconchegantes e cores quentes para renovar o guarda-roupa com muito estilo.</p>
+                    <a href="#lookbook" class="btn btn-red">Ver Campanha</a>
+                </div>
+            </div>
+            <!-- Sub Editorial Cards Grid -->
+            <div class="editorial-sub-grid">
+                <!-- Card 1 -->
+                <div class="editorial-card-small" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80');">
+                    <div class="editorial-content-small">
+                        <h4>Street Style</h4>
+                        <p>Tendências urbanas e alfaiataria desconstruída.</p>
+                        <a href="#lookbook" class="text-link">Explorar <i data-lucide="chevron-right"></i></a>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="editorial-card-small" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80');">
+                    <div class="editorial-content-small">
+                        <h4>Casual Chic</h4>
+                        <p>Elegância fluida e versatilidade para o dia a dia.</p>
+                        <a href="#lookbook" class="text-link">Explorar <i data-lucide="chevron-right"></i></a>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="editorial-card-small" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80');">
+                    <div class="editorial-content-small">
+                        <h4>Moda Conforto</h4>
+                        <p>Tecidos naturais, tricots macios e looks aconchegantes.</p>
+                        <a href="#lookbook" class="text-link">Explorar <i data-lucide="chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOOKBOOK INTERATIVO (HOTSPOTS) -->
+    <section class="section-container" id="lookbook">
+        <div class="section-header">
+            <span class="accent-title">SHOP THE LOOK</span>
+            <h2 class="section-title">Lookbook Interativo</h2>
+            <p class="section-subtitle">Clique nos pontos destacados na foto para descobrir os detalhes de cada peça e montar o visual perfeito.</p>
+        </div>
+        <div class="lookbook-layout">
+            <!-- Interactive Image Container -->
+            <div class="lookbook-image-container">
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=80" alt="Lookbook Editorial ÉDMAIS" class="lookbook-img">
+                
+                <!-- Hotspot 1: Blazer -->
+                <div class="hotspot" style="top: 25%; left: 45%;" data-product="1">
+                    <span class="hotspot-trigger"></span>
+                    <div class="hotspot-tooltip">
+                        <div class="tooltip-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=150&q=80" alt="Casaco Editorial">
+                        </div>
+                        <div class="tooltip-info">
+                            <h5>Blazer Alfaiataria Creme</h5>
+                            <span class="tooltip-price">R$ 189,90</span>
+                            <div class="tooltip-btn-row">
+                                <button class="btn btn-red btn-xs add-to-cart-quick" data-id="p1" data-name="Blazer Alfaiataria Creme" data-price="189.90" data-img="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=150&q=80">
+                                    <i data-lucide="shopping-bag"></i> Add
+                                </button>
+                                <button class="add-to-fav-quick" data-id="p1" data-name="Blazer Alfaiataria Creme" data-price="189.90" data-img="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=150&q=80">
+                                    <i data-lucide="heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotspot 2: Top -->
+                <div class="hotspot" style="top: 45%; left: 52%;" data-product="2">
+                    <span class="hotspot-trigger"></span>
+                    <div class="hotspot-tooltip">
+                        <div class="tooltip-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=150&q=80" alt="Regata Canelada">
+                        </div>
+                        <div class="tooltip-info">
+                            <h5>Regata Cropped Tricot</h5>
+                            <span class="tooltip-price">R$ 59,90</span>
+                            <div class="tooltip-btn-row">
+                                <button class="btn btn-red btn-xs add-to-cart-quick" data-id="p2" data-name="Regata Cropped Tricot" data-price="59.90" data-img="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=150&q=80">
+                                    <i data-lucide="shopping-bag"></i> Add
+                                </button>
+                                <button class="add-to-fav-quick" data-id="p2" data-name="Regata Cropped Tricot" data-price="59.90" data-img="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=150&q=80">
+                                    <i data-lucide="heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotspot 3: Pants -->
+                <div class="hotspot" style="top: 72%; left: 40%;" data-product="3">
+                    <span class="hotspot-trigger"></span>
+                    <div class="hotspot-tooltip">
+                        <div class="tooltip-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=150&q=80" alt="Calça Jeans">
+                        </div>
+                        <div class="tooltip-info">
+                            <h5>Calça Wide Leg Classic</h5>
+                            <span class="tooltip-price">R$ 139,90</span>
+                            <div class="tooltip-btn-row">
+                                <button class="btn btn-red btn-xs add-to-cart-quick" data-id="p3" data-name="Calça Wide Leg Classic" data-price="139.90" data-img="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=150&q=80">
+                                    <i data-lucide="shopping-bag"></i> Add
+                                </button>
+                                <button class="add-to-fav-quick" data-id="p3" data-name="Calça Wide Leg Classic" data-price="139.90" data-img="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=150&q=80">
+                                    <i data-lucide="heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Lookbook Products List -->
+            <div class="lookbook-products-list">
+                <h3>Visual Completo</h3>
+                <p>Misture elementos urbanos e alfaiataria com descontos exclusivos.</p>
+                <div class="look-products-wrapper">
+                    <!-- Product Card 1 -->
+                    <div class="look-product-card" data-trigger="1">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=150&q=80" alt="Blazer">
+                        <div class="look-product-details">
+                            <h4>Blazer Alfaiataria Creme</h4>
+                            <span class="price">R$ 189,90</span>
+                        </div>
+                        <button class="btn-icon-round add-to-cart-quick" data-id="p1" data-name="Blazer Alfaiataria Creme" data-price="189.90" data-img="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=150&q=80">
+                            <i data-lucide="shopping-bag"></i>
+                        </button>
+                    </div>
+                    <!-- Product Card 2 -->
+                    <div class="look-product-card" data-trigger="2">
+                        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=150&q=80" alt="Regata">
+                        <div class="look-product-details">
+                            <h4>Regata Cropped Tricot</h4>
+                            <span class="price">R$ 59,90</span>
+                        </div>
+                        <button class="btn-icon-round add-to-cart-quick" data-id="p2" data-name="Regata Cropped Tricot" data-price="59.90" data-img="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=150&q=80">
+                            <i data-lucide="shopping-bag"></i>
+                        </button>
+                    </div>
+                    <!-- Product Card 3 -->
+                    <div class="look-product-card" data-trigger="3">
+                        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=150&q=80" alt="Calça">
+                        <div class="look-product-details">
+                            <h4>Calça Wide Leg Classic</h4>
+                            <span class="price">R$ 139,90</span>
+                        </div>
+                        <button class="btn-icon-round add-to-cart-quick" data-id="p3" data-name="Calça Wide Leg Classic" data-price="139.90" data-img="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=150&q=80">
+                            <i data-lucide="shopping-bag"></i>
+                        </button>
+                    </div>
+                </div>
+                <button class="btn btn-blue btn-block" id="buy-all-look">Adicionar Todo o Look (R$ 389,70)</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMOTIONAL RED BANNER WITH COUNTDOWN -->
+    <section class="promo-banner-red" id="promotions">
+        <div class="promo-content">
+            <div class="promo-badge-text">MEGA LIQUIDAÇÃO</div>
+            <h2 class="promo-title">ATÉ 50% OFF EM ITENS SELECIONADOS</h2>
+            <p class="promo-subtitle">Renove seu guarda-roupa com o melhor da estação. A oferta expira em:</p>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown-timer">
+                <div class="timer-box">
+                    <span class="timer-number" id="hours">24</span>
+                    <span class="timer-label">Horas</span>
+                </div>
+                <span class="timer-divider">:</span>
+                <div class="timer-box">
+                    <span class="timer-number" id="minutes">00</span>
+                    <span class="timer-label">Min</span>
+                </div>
+                <span class="timer-divider">:</span>
+                <div class="timer-box">
+                    <span class="timer-number" id="seconds">00</span>
+                    <span class="timer-label">Seg</span>
+                </div>
+            </div>
+            
+            <a href="#departments" class="btn btn-white btn-lg">Ver Ofertas</a>
+        </div>
+    </section>
+
+    <!-- BRANDS SECTION (CAROUSEL) -->
+    <section class="section-container" id="brands">
+        <div class="section-header">
+            <h2 class="section-title">Grandes Marcas Parceiras</h2>
+            <p class="section-subtitle">Exclusividade e curadoria nacional que você encontra na ÉDMAIS</p>
+        </div>
+        <div class="brands-carousel-container">
+            <div class="brands-track">
+                <!-- Brand item 1 -->
+                <div class="brand-item-card"><span>Hering</span></div>
+                <!-- Brand item 2 -->
+                <div class="brand-item-card"><span>Malwee</span></div>
+                <!-- Brand item 3 -->
+                <div class="brand-item-card"><span>Ramiriz</span></div>
+                <!-- Brand item 4 -->
+                <div class="brand-item-card"><span>Vizzano</span></div>
+                <!-- Brand item 5 -->
+                <div class="brand-item-card"><span>Moleca</span></div>
+                <!-- Brand item 6 -->
+                <div class="brand-item-card"><span>Beira Rio</span></div>
+                <!-- Brand item 7 -->
+                <div class="brand-item-card"><span>Dakota</span></div>
+                <!-- Brand item 8 -->
+                <div class="brand-item-card"><span>Olympikus</span></div>
+                <!-- Duplicate for seamless scroll -->
+                <div class="brand-item-card"><span>Hering</span></div>
+                <div class="brand-item-card"><span>Malwee</span></div>
+                <div class="brand-item-card"><span>Ramiriz</span></div>
+                <div class="brand-item-card"><span>Vizzano</span></div>
+                <div class="brand-item-card"><span>Moleca</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FASHION INSPIRATION SECTION (EDITORIAL CARDS) -->
+    <section class="section-container bg-light-section">
+        <div class="section-header">
+            <span class="accent-title">BLOG EDITORIAL</span>
+            <h2 class="section-title">Inspiração & Estilo</h2>
+            <p class="section-subtitle">Dicas de looks, combinações de cores e tudo sobre as últimas tendências das passarelas para o seu dia a dia.</p>
+        </div>
+        <div class="inspiration-grid">
+            <!-- Card 1 -->
+            <article class="inspire-card">
+                <div class="inspire-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1505022610485-0249ba5b3675?auto=format&fit=crop&w=600&q=80" alt="Tendências do Inverno">
+                    <span class="inspire-tag">Tendências</span>
+                </div>
+                <div class="inspire-content">
+                    <span class="inspire-date">24 Julho, 2026</span>
+                    <h3>5 Peças essenciais que nunca saem de moda</h3>
+                    <p>Do blazer oversized à t-shirt branca de algodão egípcio. Aprenda como criar um guarda-roupa funcional e elegante.</p>
+                    <a href="#lookbook" class="inspire-link">Ler Matéria <i data-lucide="arrow-right"></i></a>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="inspire-card">
+                <div class="inspire-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=600&q=80" alt="Calçados">
+                    <span class="inspire-tag">Estilo</span>
+                </div>
+                <div class="inspire-content">
+                    <span class="inspire-date">18 Julho, 2026</span>
+                    <h3>Como combinar tênis casuais em looks de escritório</h3>
+                    <p>O conforto conquistou o ambiente corporativo. Veja como equilibrar peças de alfaiataria com calçados esportivos sem perder a formalidade.</p>
+                    <a href="#lookbook" class="inspire-link">Ler Matéria <i data-lucide="arrow-right"></i></a>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="inspire-card">
+                <div class="inspire-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=600&q=80" alt="Acessórios">
+                    <span class="inspire-tag">Acessórios</span>
+                </div>
+                <div class="inspire-content">
+                    <span class="inspire-date">10 Julho, 2026</span>
+                    <h3>Guia de acessórios: o poder dos detalhes nos looks básicos</h3>
+                    <p>Um cinto minimalista ou um brinco orgânico metalizado podem transformar completamente uma combinação simples de jeans e camiseta.</p>
+                    <a href="#lookbook" class="inspire-link">Ler Matéria <i data-lucide="arrow-right"></i></a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- STORE LOCATOR SECTION -->
+    <section class="section-container" id="store-locator">
+        <div class="store-locator-wrapper">
+            <div class="store-info-side">
+                <span class="accent-title">PRESENÇA NACIONAL</span>
+                <h2>Encontre a ÉDMAIS mais próxima</h2>
+                <p>Nossa rede de varejo conta com <strong>mais de 90 lojas físicas</strong> distribuídas estrategicamente para levar o melhor da moda e preço justo até você. Encontre horários de funcionamento, endereços e telefones.</p>
+                
+                <!-- Filter Controls -->
+                <div class="store-filters">
+                    <div class="filter-group">
+                        <label for="state-select">Estado</label>
+                        <select id="state-select">
+                            <option value="">Selecione o Estado</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="PR">Paraná</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="city-select">Cidade</label>
+                        <select id="city-select" disabled>
+                            <option value="">Selecione o Estado Primeiro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Stores List Container -->
+                <div class="stores-results-list" id="stores-list">
+                    <div class="no-selection-message">
+                        <i data-lucide="map-pin"></i>
+                        <p>Selecione o estado e a cidade para ver as lojas disponíveis.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mock Map Area -->
+            <div class="store-map-side">
+                <div class="map-placeholder">
+                    <!-- Map background look -->
+                    <div class="map-grid-pattern"></div>
+                    <div class="map-pulse-pin pin-1" style="top: 40%; left: 35%;"></div>
+                    <div class="map-pulse-pin pin-2" style="top: 55%; left: 60%;"></div>
+                    <div class="map-pulse-pin pin-3" style="top: 70%; left: 45%;"></div>
+                    <div class="map-card-info" id="map-tooltip">
+                        <h4>Sede ÉDMAIS</h4>
+                        <p>Rede com mais de 90 lojas físicas no Brasil</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT ÉDMAIS (TIMELINE) -->
+    <section class="section-container bg-light-section" id="about-us">
+        <div class="about-wrapper">
+            <div class="about-text-side">
+                <span class="accent-title">NOSSA HISTÓRIA</span>
+                <h2>Moda e Compromisso desde 1992</h2>
+                <p>A ÉDMAIS nasceu com o propósito de tornar a moda acessível a todos, oferecendo variedade, qualidade e atendimento acolhedor. Com o passar das décadas, expandimos nossa rede para mais de 90 lojas físicas, tornando-nos referência no segmento fashion multimarcas.</p>
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <h3>1992</h3>
+                        <p>Fundação</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>90+</h3>
+                        <p>Lojas Físicas</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>1000+</h3>
+                        <p>Colaboradores</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timeline widget -->
+            <div class="about-timeline-side">
+                <div class="timeline-navigation">
+                    <button class="timeline-nav-btn active" data-year="1992">1992</button>
+                    <button class="timeline-nav-btn" data-year="2005">2005</button>
+                    <button class="timeline-nav-btn" data-year="2015">2015</button>
+                    <button class="timeline-nav-btn" data-year="2026">Hoje</button>
+                </div>
+                <div class="timeline-content-card" id="timeline-content">
+                    <h3 class="timeline-card-title">A Origem da ÉDMAIS</h3>
+                    <p class="timeline-card-desc">Fundada em 1992, a ÉDMAIS iniciou suas operações como uma pequena loja multimarcas de vestuário. Desde o início, o foco esteve em trazer produtos com excelente custo-benefício e um mix variado para vestir toda a família.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM INTEGRATION -->
+    <section class="section-container">
+        <div class="section-header">
+            <span class="accent-title">NO INSTAGRAM</span>
+            <h2 class="section-title">#VouDeEDMAIS</h2>
+            <p class="section-subtitle">Siga-nos @edmais.oficial e compartilhe seus looks favoritos usando nossa hashtag</p>
+        </div>
+        <div class="instagram-grid">
+            <!-- Item 1 -->
+            <div class="insta-item" data-img="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80">
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=400&q=80" alt="Instagram Post">
+                <div class="insta-overlay">
+                    <div class="insta-stats">
+                        <span><i data-lucide="heart"></i> 1.2k</span>
+                        <span><i data-lucide="message-circle"></i> 48</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="insta-item" data-img="https://images.unsplash.com/photo-1505022610485-0249ba5b3675?auto=format&fit=crop&w=600&q=80">
+                <img src="https://images.unsplash.com/photo-1505022610485-0249ba5b3675?auto=format&fit=crop&w=400&q=80" alt="Instagram Post">
+                <div class="insta-overlay">
+                    <div class="insta-stats">
+                        <span><i data-lucide="heart"></i> 940</span>
+                        <span><i data-lucide="message-circle"></i> 32</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="insta-item" data-img="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=600&q=80">
+                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=400&q=80" alt="Instagram Post">
+                <div class="insta-overlay">
+                    <div class="insta-stats">
+                        <span><i data-lucide="heart"></i> 1.5k</span>
+                        <span><i data-lucide="message-circle"></i> 56</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Item 4 -->
+            <div class="insta-item" data-img="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=600&q=80">
+                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=400&q=80" alt="Instagram Post">
+                <div class="insta-overlay">
+                    <div class="insta-stats">
+                        <span><i data-lucide="heart"></i> 870</span>
+                        <span><i data-lucide="message-circle"></i> 19</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER SECTION -->
+    <section class="newsletter-section" id="newsletter">
+        <div class="newsletter-container">
+            <span class="accent-title">CLUBE DE BENEFÍCIOS</span>
+            <h2>Fique por dentro das novidades</h2>
+            <p>Cadastre seu e-mail e receba tendências de moda, avisos de promoções exclusivas e <strong>10% OFF</strong> na sua primeira compra.</p>
+            
+            <form class="newsletter-form" id="newsletter-form" novalidate>
+                <div class="form-group-wrapper">
+                    <div class="form-input-container">
+                        <i data-lucide="mail" class="mail-icon"></i>
+                        <input type="email" placeholder="Digite seu melhor e-mail" id="newsletter-email" required>
+                    </div>
+                    <button type="submit" class="btn btn-red">Cadastrar</button>
+                </div>
+                <div class="form-feedback" id="newsletter-feedback"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <!-- Brand description -->
+            <div class="footer-col-brand">
+                <a href="#" class="logo-brand" aria-label="ÉDMAIS Home">
+                    <img src="logo-edmais-official.png" alt="ÉDMAIS" class="logo-img">
+                </a>
+                <p>Moda, estilo, tendências e calçados com preços democráticos. Presença nacional em mais de 90 lojas físicas para vestir você e sua família.</p>
+                <div class="social-icons">
+                    <a href="https://instagram.com/lojasedmais" target="_blank" rel="noopener" aria-label="Instagram ÉDMAIS" title="Instagram @lojasedmais" class="icon-instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://facebook.com/lojasedmais" target="_blank" rel="noopener" aria-label="Facebook ÉDMAIS" title="Facebook ÉDMAIS" class="icon-facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://wa.me/551140033900" target="_blank" rel="noopener" aria-label="WhatsApp ÉDMAIS" title="WhatsApp (11) 4003-3900" class="icon-whatsapp">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+                    </a>
+                    <a href="https://youtube.com/@lojasedmais" target="_blank" rel="noopener" aria-label="YouTube ÉDMAIS" title="YouTube ÉDMAIS" class="icon-youtube">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="https://tiktok.com/@lojasedmais" target="_blank" rel="noopener" aria-label="TikTok ÉDMAIS" title="TikTok @lojasedmais" class="icon-tiktok">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.97v7.58c.01 2.24-.62 4.54-2.09 6.27-1.46 1.73-3.66 2.76-5.91 2.91-2.25.16-4.59-.44-6.3-1.92C.6 21.42-.24 19.16.03 16.92c.27-2.24 1.49-4.32 3.32-5.59 1.83-1.27 4.18-1.74 6.35-1.29v4.14c-1.07-.33-2.27-.2-3.23.36-.96.56-1.64 1.55-1.83 2.64-.19 1.09.12 2.23.82 3.08.7.85 1.79 1.34 2.89 1.3 1.1-.04 2.14-.58 2.77-1.48.63-.9.91-2.05.89-3.15V.02z"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/company/lojasedmais" target="_blank" rel="noopener" aria-label="LinkedIn ÉDMAIS" title="LinkedIn ÉDMAIS" class="icon-linkedin">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Cartão ÉDMAIS Column -->
+            <div class="footer-col">
+                <h4>Cartão ÉDMAIS</h4>
+                <ul>
+                    <li><a href="cartao-edmais.html">Solicitar Cartão</a></li>
+                    <li><a href="boleto.html">2ª Via de Boleto</a></li>
+                    <li><a href="boleto.html">Consultar Fatura</a></li>
+                    <li><a href="cartao-edmais.html">Vantagens & Benefícios</a></li>
+                </ul>
+            </div>
+            
+            <!-- Atendimento e Institucional Column -->
+            <div class="footer-col">
+                <h4>Institucional & Legislação</h4>
+                <ul>
+                    <li><a href="quem-somos.html">Quem Somos / História</a></li>
+                    <li><a href="privacidade.html">Política de Privacidade (LGPD)</a></li>
+                    <li><a href="atendimento.html?tipo=fale-conosco">Fale Conosco (SAC)</a></li>
+                    <li><a href="atendimento.html?tipo=trabalhe-conosco">Trabalhe Conosco (Vagas)</a></li>
+                    <li><a href="#store-locator">Nossas Lojas (90+)</a></li>
+                </ul>
+            </div>
+            
+            <!-- Lojas Column -->
+            <div class="footer-col">
+                <h4>Nossas Lojas</h4>
+                <ul>
+                    <li><a href="#store-locator">Encontrar Lojas</a></li>
+                    <li><a href="#store-locator">Eventos em Loja</a></li>
+                    <li><a href="#store-locator">Parcerias Locais</a></li>
+                </ul>
+            </div>
+            
+            <!-- Pagamento e Selos Column -->
+            <div class="footer-col footer-security">
+                <h4>Pagamento & Segurança</h4>
+                <div class="payment-methods">
+                    <span class="pay-badge"><i data-lucide="credit-card"></i> Cartões</span>
+                    <span class="pay-badge"><i data-lucide="qr-code"></i> Pix</span>
+                    <span class="pay-badge"><i data-lucide="barcode"></i> Boleto</span>
+                </div>
+                <div class="security-badges">
+                    <div class="security-badge"><i data-lucide="shield-check"></i> Site Seguro SSL</div>
+                </div>
+
+                <div class="footer-whatsapp-box">
+                    <h5 style="font-family: var(--font-heading); color: #25D366; font-size: 0.9rem; margin-bottom: 5px;"><i data-lucide="message-circle" style="vertical-align: middle;"></i> Atendimento WhatsApp</h5>
+                    <p style="font-size: 0.8rem; color: var(--color-light-gray); margin-bottom: 10px;">Fale conosco: (11) 4003-3900</p>
+                    <a href="https://wa.me/551140033900?text=Ol%C3%A1%21%20Gostaria%20de%20atendimento%20nas%20Lojas%20%C9DMAIS" target="_blank" rel="noopener" class="btn btn-whatsapp" style="width: 100%; font-size: 0.8rem; padding: 8px 12px;">
+                        <i data-lucide="message-circle"></i> Iniciar Conversa
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Legal bottom bar -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 ÉDMAIS Empreendimentos e Participações Ltda. CNPJ: 09.469.385/0001-05. Todos os direitos reservados.</p>
+            <p><a href="privacidade.html" style="color: var(--color-light-gray); text-decoration: underline;">Política de Privacidade & LGPD</a></p>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/551140033900?text=Ol%C3%A1%21%20Gostaria%20de%20atendimento%20nas%20Lojas%20%C9DMAIS" target="_blank" rel="noopener" class="floating-whatsapp" aria-label="Atendimento pelo WhatsApp">
+        <i data-lucide="message-circle"></i>
+    </a>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- INSTAGRAM POST LIGHTBOX MODAL -->
+    <div class="modal-overlay" id="insta-modal">
+        <div class="modal-container">
+            <button class="modal-close" id="insta-modal-close"><i data-lucide="x"></i></button>
+            <div class="insta-modal-body">
+                <div class="insta-modal-img-side">
+                    <img src="" id="insta-modal-img" alt="Post Completo">
+                </div>
+                <div class="insta-modal-content-side">
+                    <div class="insta-modal-header">
+                        <span class="logo-brand mini">
+                            <img src="logo-edmais-official.png" alt="ÉDMAIS" class="logo-img">
+                        </span>
+                        <strong>@edmais.oficial</strong>
+                    </div>
+                    <div class="insta-modal-comments">
+                        <p class="post-caption"><strong>@edmais.oficial</strong> O inverno chegou com looks que trazem conforto e elegância na medida certa! ✨ Encontre essas peças exclusivas em qualquer uma de nossas mais de 90 lojas no Brasil. #VouDeEDMAIS #ModaEDMAIS</p>
+                        <div class="comment-item"><strong>@mariasilva</strong> Que blazer lindo! Tem na loja de Sorocaba?</div>
+                        <div class="comment-item"><strong>@edmais.oficial</strong> Olá, Maria! Tem sim! Te esperamos lá! 😉</div>
+                        <div class="comment-item"><strong>@fernando_m</strong> Combinação perfeita de tons terrosos! 👏👏</div>
+                    </div>
+                    <div class="insta-modal-actions">
+                        <button class="modal-like-btn"><i data-lucide="heart"></i> Curtir</button>
+                        <span class="likes-count">1,240 curtidas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN JAVASCRIPT -->
+    <script src="app.js"></script>
+</body>
+</html>

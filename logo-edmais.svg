@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" width="260" height="64">
+  <defs>
+    <linearGradient id="edBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B3D91"/>
+      <stop offset="100%" stop-color="#06255B"/>
+    </linearGradient>
+    <linearGradient id="redBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E31E24"/>
+      <stop offset="100%" stop-color="#B81217"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0B3D91" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Group Logo Emblem & Text -->
+  <g id="logo-group">
+    <!-- Main Emblem Shield Badge -->
+    <rect x="4" y="6" width="52" height="52" rx="14" fill="url(#edBg)" filter="url(#shadow)"/>
+    
+    <!-- Emblem Text "ÉD" -->
+    <text x="30" y="41" font-family="'Montserrat', 'Outfit', 'Helvetica Neue', sans-serif" font-weight="900" font-size="25" fill="#FFFFFF" text-anchor="middle" letter-spacing="-0.5">ÉD</text>
+
+    <!-- Red Plus Icon Badge inside Emblem (Top Right Accent) -->
+    <circle cx="46" cy="14" r="10" fill="url(#redBg)" stroke="#FFFFFF" stroke-width="2"/>
+    <path d="M46 9v10M41 14h10" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Typography "ÉD" -->
+    <text x="68" y="44" font-family="'Montserrat', 'Outfit', 'Helvetica Neue', sans-serif" font-weight="900" font-size="34" fill="#0B3D91" letter-spacing="-1px">ÉD</text>
+
+    <!-- Typography "MAIS" -->
+    <text x="115" y="44" font-family="'Montserrat', 'Outfit', 'Helvetica Neue', sans-serif" font-weight="900" font-size="34" fill="#E31E24" letter-spacing="-1px">MAIS</text>
+
+    <!-- Plus Symbol Badge (+) next to MAIS -->
+    <g transform="translate(215, 16)">
+      <rect width="24" height="24" rx="8" fill="url(#redBg)" filter="url(#shadow)"/>
+      <path d="M12 6v12M6 12h12" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>
