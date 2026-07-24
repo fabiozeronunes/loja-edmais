@@ -65,12 +65,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (overlayEl) overlayEl.addEventListener('click', closeFunc);
     });
 
-    // Close drawers on clicking link actions inside them
-    document.querySelectorAll('.close-drawer-action').forEach(action => {
-        action.addEventListener('click', () => {
-            document.querySelectorAll('.side-drawer').forEach(d => d.classList.remove('active'));
-            document.querySelectorAll('.drawer-overlay').forEach(o => o.classList.remove('active'));
-            document.body.style.overflow = '';
+    // Close drawers on clicking link actions or any links inside the side drawers
+    const closeAllDrawers = () => {
+        document.querySelectorAll('.side-drawer').forEach(d => d.classList.remove('active'));
+        document.querySelectorAll('.drawer-overlay').forEach(o => o.classList.remove('active'));
+        document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('.close-drawer-action, .side-drawer a').forEach(link => {
+        link.addEventListener('click', () => {
+            closeAllDrawers();
         });
     });
 

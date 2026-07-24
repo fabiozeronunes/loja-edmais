@@ -244,14 +244,41 @@
         </div>
     </footer>
 
+    <!-- SIDE DRAWER: MOBILE MENU -->
+    <div class="drawer-overlay" id="mobile-menu-overlay"></div>
+    <div class="side-drawer mobile-drawer" id="mobile-drawer">
+        <div class="drawer-header">
+            <span class="logo-brand">
+                <img src="logo-edmais-official.png" alt="ÉDMAIS" class="logo-img">
+            </span>
+            <button class="close-drawer-btn" id="mobile-menu-close"><i data-lucide="x"></i></button>
+        </div>
+        <div class="drawer-content">
+            <ul class="mobile-nav-list">
+                <li><a href="index.html#departments" class="mobile-nav-link">Feminino</a></li>
+                <li><a href="index.html#departments" class="mobile-nav-link">Masculino</a></li>
+                <li><a href="index.html#departments" class="mobile-nav-link">Infantil</a></li>
+                <li><a href="index.html#departments" class="mobile-nav-link">Calçados</a></li>
+                <li><a href="cartao-edmais.html" class="mobile-nav-link highlight-red">Cartão ÉDMAIS</a></li>
+                <li><a href="boleto.html" class="mobile-nav-link">2ª Via de Boleto</a></li>
+                <li><a href="index.html#store-locator" class="mobile-nav-link">Lojas Físicas (90+)</a></li>
+            </ul>
+            <div class="mobile-drawer-footer">
+                <a href="atendimento.html?tipo=fale-conosco" class="contact-item"><i data-lucide="phone"></i> Atendimento</a>
+                <a href="index.html#store-locator" class="contact-item"><i data-lucide="map-pin"></i> Encontre uma Loja</a>
+            </div>
+        </div>
+    </div>
+
     <!-- FLOATING WHATSAPP BUTTON -->
     <a href="https://wa.me/551140033900?text=Ol%C3%A1%21%20Gostaria%20de%20atendimento%20nas%20Lojas%20%C9DMAIS" target="_blank" rel="noopener" class="floating-whatsapp" aria-label="Atendimento pelo WhatsApp">
         <i data-lucide="message-circle"></i>
     </a>
 
+    <!-- MAIN JAVASCRIPT -->
+    <script src="app.js"></script>
     <!-- JS LOGIC -->
     <script>
-        lucide.createIcons();
 
         function selectFormType(type) {
             const purposeSelect = document.getElementById('contact-purpose');
