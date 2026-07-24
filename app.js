@@ -73,8 +73,27 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     document.querySelectorAll('.close-drawer-action, .side-drawer a').forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
             closeAllDrawers();
+            
+            if (href && (href.startsWith('#') || href.startsWith('index.html#'))) {
+                const targetId = href.split('#')[1];
+                const targetEl = document.getElementById(targetId);
+                
+                // Verificação para ver se estamos na index.html ou página raiz
+                const isCurrentPage = window.location.pathname.endsWith('index.html') || 
+                                     window.location.pathname.endsWith('/') ||
+                                     !window.location.pathname.includes('.html');
+                
+                if (targetEl && isCurrentPage) {
+                    e.preventDefault();
+                    // Atraso sutil para dar tempo do drawer fechar e a rolagem ser liberada
+                    setTimeout(() => {
+                        targetEl.scrollIntoView({ behavior: 'smooth' });
+                    }, 200);
+                }
+            }
         });
     });
 
